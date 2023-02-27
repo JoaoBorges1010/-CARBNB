@@ -27,12 +27,14 @@ class CarsController < ApplicationController
 
   def update
     @car.update(car_params)
+    @car.user = current_user
 
     redirect_to car_path(@car)
   end
 
   def destroy
     @car.destroy
+    @car.user = current_user
     redirect_to cars_path, status: :see_other
   end
 
