@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="text-center card mt-3 p-1"><h1>CREATE A NEW CAR</h1></div>
+  <%= simple_form_for (@car), html: { class: "form"} do |f| %>
+  <div class="form-control"><%= f.input :brand %></div>
+  <%= f.input :model %>
+  <%= f.input :fuel_type %>
+  <%= f.input :category %>
+  <%= f.input :location %>
+  <%= f.input :year %>
+  <%= f.input :space_available %>
+  <%= f.input :price_per_day %>
+  <%= f.input :car_available %>
+  <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
