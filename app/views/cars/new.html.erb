@@ -20,7 +20,7 @@
         </div>
         <div class="col-md-4 select">
           <div class="form-group">
-            <%= f.input :fuel_type, class: "form-control" %>
+            <%= f.input :price_per_day, class: "form-control" %>
           </div>
         </div>
         <div class="col-md-4 select">
@@ -34,8 +34,9 @@
           </div>
         </div>
         <div class="col-md-4 select">
-          <div class="form-group">
-            <%= f.input :price_per_day, class: "form-control" %>
+          <div class="form-group mt-5">
+          <%= f.label :fuel_type %>
+            <%= f.select :fuel_type, [["Gasoline", "Gasolin"], ["Diesel", "Diesel"], ["GPL", "GPL"], ["Electric", "Electric"]], class: "form-control" %>
           </div>
         </div>
         <div class="col-md-4 select">
@@ -45,6 +46,7 @@
         </div>
         <div class="col-md-4 select">
           <div class="form-group mt-5">
+          <%= f.label :category %>
             <%= f.select :category, [["Cabrio", "Cabrio"], ["SUV", "SUV"], ["Minivan", "Minivan"], ["Sedan", "Sedan"], ["Coupe", "Coupe"], ["StationWagon", "StationWagon"], ["Hatchback", "hatchback"], ["Sportscar", "Sportscar"]], class: "form-control" %>
           </div>
         </div>
