@@ -1,9 +1,12 @@
-<div class="container mt-4">
-  <div class="card">
-    <h1 class="text-center p-3">list your car</h1>
-  </div>
-    <div class="container card p-2 mt-5">
-      <%= simple_form_for (@car), html: { class: "form-inline"} do |f| %>
+<div class="container mt-5">
+  <div class="newsletter-subscribe">
+    <div class="container">
+      <div class="intro">
+        <h2 class="text-center">List your car</h2>
+        <p class="text-center">details for the car you want to add</p>
+      </div>
+    <div class="container p-2 mt-5">
+      <%= simple_form_for (@car), html: { class: "form"} do |f| %>
       <div class="row">
         <div class="col-md-4 select">
           <div class="form-group">
@@ -12,17 +15,12 @@
         </div>
         <div class="col-md-4 select">
           <div class="form-group">
-            <%= f.input :model, class: "form-control" %>
+            <%= f.input :model, class: "form-control bg-primary" %>
           </div>
         </div>
         <div class="col-md-4 select">
           <div class="form-group">
             <%= f.input :fuel_type, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col-md-4 select">
-          <div class="form-group">
-            <%= f.input :category, class: "form-control" %>
           </div>
         </div>
         <div class="col-md-4 select">
@@ -37,11 +35,6 @@
         </div>
         <div class="col-md-4 select">
           <div class="form-group">
-            <%= f.input :space_available, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col-md-4 select">
-          <div class="form-group">
             <%= f.input :price_per_day, class: "form-control" %>
           </div>
         </div>
@@ -50,10 +43,19 @@
             <%= f.input :car_available, class: "form-control" %>
           </div>
         </div>
+        <div class="col-md-4 select">
+          <div class="form-group mt-5">
+            <%= f.select :category, [["Cabrio", "Cabrio"], ["SUV", "SUV"], ["Minivan", "Minivan"], ["Sedan", "Sedan"], ["Coupe", "Coupe"], ["StationWagon", "StationWagon"], ["Hatchback", "hatchback"], ["Sportscar", "Sportscar"]], class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-4 select">
+          <div class="form-group mt-5">
+            <%= f.label :space_available %>
+            <%= f.select :space_available, [[1, 1],[2, 2], [3, 3], [4, 4],[5, 5], [6, 6], [7, 7], [8, 8], [9, 9]], class: "form-control" %>
+          </div>
+        </div>
         <div class="form-group"><%= f.submit class: "btn btn-primary" %></div>
       </div>
       <% end %>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
   </div>
 </div>

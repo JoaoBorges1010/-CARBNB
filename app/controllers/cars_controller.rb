@@ -34,7 +34,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    @car.user = current_user
+    
     redirect_to cars_path, status: :see_other
   end
 
