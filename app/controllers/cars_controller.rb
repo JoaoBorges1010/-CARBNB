@@ -27,10 +27,7 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car.update(car_params)
-    @car.user = current_user
-
-    if car.update
+    if @car.update(car_params)
       redirect_to car_path(@car)
     else
       render :edit, status: :unprocessable_entity

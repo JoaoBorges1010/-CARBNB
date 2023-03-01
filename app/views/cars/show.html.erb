@@ -1,22 +1,21 @@
 <div class="row justify-content-center">
   <div class="container1 col-8 position-relative">
     <h1 class="mt-4 mb-3">Car Details</h1>
-      <%= button_to car_path(@car), method: :delete,
-        form: {data: {turbo_confirm: "are you sure?"}}, style:"border:none", class:"my_class" do %>
-        <i class="fa-solid fa-trash-can"></i>
-      <% end %>
-
+    <%= button_to car_path(@car), method: :delete,
+      form: {data: {turbo_confirm: "are you sure?"}}, style:"border:none", class:"my_class" do %>
+      <i class="fa-solid fa-trash-can"></i>
+    <% end %>
     <div class="card1">
       <div class="card-header1 d-flex justify-content-between align-items-center">
         <h4><%= @car.brand %> <%= @car.model %></h4>
         <div class="d-flex align-items-center gap-">
-          <button class="button-57" role="button"><span class="text">Book Now!</span><span>Enjoy the ride!</span></button>
-          <%= link_to "Edit Car", edit_car_path(@car), class: "button-57", role: "button" %>
+          <%= link_to "Book Now", new_car_booking_path(@car), class: "button-55", role: "button" %>
+          <%= link_to "Edit Car", edit_car_path(@car), class: "button-55", role: "button" %>
         </div>
       </div>
-      <div class="card-body1">
-        <div class="row">
-          <div class="col-sm-6">
+      <div class="card-body1 d-flex justify-content-between">
+        <div class="row flex-grow-1">
+          <div class="col-3">
             <p><strong>Fuel Type:</strong> <span><%= @car.fuel_type %></span>
             <p><strong>Category:</strong> <span><%= @car.category %></span>
             <p><strong>Location:</strong> <span><%= @car.location %></span>
@@ -25,10 +24,28 @@
             <p><strong>Price Per Day:</strong> <span><%= @car.price_per_day %></span>
             <p><strong>Car Available:</strong> <span><%= @car.car_available ? 'Yes' : 'No' %></span>
           </div>
-          <div class="col-sm-6">
-            <!-- Add an image of the car here -->
-            <img src="https://www.edmunds.com/assets/m/volkswagen/passat/2002/oem/2002_volkswagen_passat_sedan_gls-18t_fq_oem_1_500.jpg">
-            <%# <%= image_tag @car.image_url, class: "img-fluid" %>
+          <div class="col-9">
+            <div id="carouselExample" class="carousel slide col-sm-6 w-100 h-100">
+              <div class="carousel-inner w-100 h-100">
+                <div class="carousel-item active w-100 h-100">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg/600px-LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item w-100 h-100">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/2013-03-05_Geneva_Motor_Show_8278.JPG/360px-2013-03-05_Geneva_Motor_Show_8278.JPG" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item w-100 h-100">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/LaFerrari_at_Goodwood_2014_006.jpg/460px-LaFerrari_at_Goodwood_2014_006.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
