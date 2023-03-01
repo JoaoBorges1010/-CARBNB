@@ -28,7 +28,7 @@ class CarsController < ApplicationController
   def update
     @car.update(car_params)
     @car.user = current_user
-    
+
     if car.update
       redirect_to car_path(@car)
     else
