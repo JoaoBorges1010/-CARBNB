@@ -1,4 +1,54 @@
-<h1>THIS IS CARS</h1>
-<% @cars.each do |car| %>
-<p><%= car.brand %></p>
-<% end %>
+<div class="container container-car-list">
+    <br>
+    <div class="container card text-center p-1 w-50 rounded"><h3 class="mt-3">Book a car</h3></div>
+	<br>
+	<div class="row" id="ads">
+    <!-- Category Card -->
+    <% @cars.each do |car| %>
+      <% if car.car_available == true %>
+        <div class="col-md-4">
+            <div class="card rounded mb-4">
+                <div class="card-image">
+                    <span class="card-notify-badge"><%= car.category %></span>
+                    <span class="card-notify-year"><%= car.year %></span>
+                    <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
+                </div>
+                <div class="card-image-overlay m-auto">
+                    <span class="card-detail-badge"><%= car.location %></span>
+                    <span class="card-detail-badge"><%= car.price_per_day %>€</span>
+                    <span class="card-detail-badge"><%= car.fuel_type %></span>
+                    <span class="card-detail-badge">Fits: <%= car.space_available %></span>
+                </div>
+                <div class="card-body text-center">
+                    <div class="ad-title m-auto">
+                        <h5><%= "#{car.brand} #{car.model}" %></h5>
+                    </div>
+                    <%= link_to "VIEW", car_path(car), class: "ad-btn" %>
+                </div>
+            </div>
+        </div>
+       <% else %>
+         <div class="col-md-4">
+            <div class="card rounded card-opacity">
+                <div class="card-image">
+                    <span class="card-notify-badge"><%= car.category %></span>
+                    <span class="card-notify-year"><%= car.year %></span>
+                    <img class="img-fluid" src="https://imageonthefly.autodatadirect.com/images/?USER=eDealer&PW=edealer872&IMG=USC80HOC011A021001.jpg&width=440&height=262" alt="Alternate Text" />
+                </div>
+                <div class="card-image-overlay m-auto">
+                    <span class="card-detail-badge"><%= car.location %></span>
+                    <span class="card-detail-badge"><%= car.price_per_day %>€</span>
+                    <span class="card-detail-badge"><%= car.fuel_type %></span>
+                    <span class="card-detail-badge">Fits: <%= car.space_available %></span>
+                </div>
+                <div class="card-body text-center">
+                    <div class="ad-title m-auto">
+                        <h5><%= "#{car.brand} #{car.model}" %></h5>
+                    </div>
+                </div>
+            </div>
+         </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
