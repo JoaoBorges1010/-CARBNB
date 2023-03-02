@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cloudinary/2.24.1/cloudinary.min.js"></script>
+
 <div class="container mt-5">
   <div class="newsletter-subscribe">
     <div class="container">
@@ -57,13 +59,14 @@
           </div>
         </div>
         <div class="col-md-4 select">
-          <div class="form-group mt-5">
+          <div class="form-group">
             <%= f.label :images %>
-            <%= f.file_field :images, class: "form-control" %>
+            <%= f.file_field :images, class: "form-control", multiple: true %>
+            <div id="image-preview"></div>
           </div>
         </div>
         <div class="form-group"><%= f.submit class: "btn btn-primary" %></div>
-      </div>
+        </div>
       <% end %>
     </div>
   </div>
@@ -71,3 +74,31 @@
 
 
 <!-- Add this to your form -->
+<script>
+  const input = document.querySelector('input[type="file"]');
+  const preview = document.querySelector('#image-preview');
+
+  input.addEventListener('change', () => {
+    preview.innerHTML = ''; // Clear previous previews
+
+    const files = Array.from(input.files);
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = document.createElement('img');
+        img.src = reader.result;
+        img.classList.add('preview-image');
+        preview.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+</script>
+
+<style>
+  .preview-image {
+    max-width: 200px;
+    max-height: 200px;
+    margin-right: 10px;
+  }
+</style>
