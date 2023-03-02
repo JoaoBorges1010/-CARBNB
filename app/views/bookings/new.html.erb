@@ -1,21 +1,70 @@
-<div class="container mt-5">
-  <div class="newsletter-subscribe">
-    <div class="container">
-      <div class="intro">
-        <h2 class="text-center">Book This car</h2>
-        <p class="text-center">Check your price Before submiting</p>
-      </div>
-      <div class="container p-2 mt-5" data-controller="total-price" data-total-price-daily-price-value="<%= @car.price_per_day %>">
-        <%= simple_form_for [@car, @booking] do |f|%>
-          <div class="form-group"><%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
-          <div class="form-group"><%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
-          <div class="card w-25 rounded bg-light m-2">
-            <h4 class="text-center">Price:</h4>
-            <h2 class="text-center" data-total-price-target="finalPrice"></h2><h2>€</h2>
+
+
+<div class="row justify-content-center">
+  <div class="booking-container d-flex justify-content-around col-10 row">
+
+    <div class="col-12 col-lg-6 card bg-white booked-card d-flex justify-content-between">
+        <div class="container row justify-content-center p-2 mt-5" data-controller="total-price" data-total-price-daily-price-value="<%= @car.price_per_day %>">
+
+          <div class="">
+            <%= simple_form_for [@car, @booking] do |f|%>
+              <div class="form-group w-50"><%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
+              <div class="form-group"><%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
+              <div class="form-group d-flex justify-content-center"><%= f.submit class: "btn btn-primary" %> </div>
+              <% end %>
+              <div class="card bg-light total-price mt-4">
+                <h4 class="text-center">Book amount:</h4>
+                <h2 class="text-center" data-total-price-target="finalPrice"></h2><h2>€</h2>
+              </div>
           </div>
-          <div class="form-group"><%= f.submit class: "btn btn-primary" %>
-        <% end %>
-      </div>
+        </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <article class="blog-card">
+        <div class="blog-card__background">
+          <div class="card__background--wrapper">
+            <div class="card__background--main" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/LaFerrari_at_Goodwood_2014_006.jpg/460px-LaFerrari_at_Goodwood_2014_006.jpg');">
+              <div class="card__background--layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="blog-card__head">
+          <span class="date__box">
+            <span class="date__day"><%= Date.today %></span>
+            <span class="date__month"></span>
+          </span>
+        </div>
+        <div class="blog-card__info">
+          <h5>Would you like to book this car</h5>
+          <p>
+            <a href="#" class="icon-link mr-3"><i class="fa-solid fa-car"></i> <%= @car.brand %></a>
+            <a href="#" class="icon-link"><i class="fa-solid fa-flag-checkered"></i> <%= @car.model %></a>
+          </p>
+          <%= simple_form_for [@car, @booking] do |f|%>
+          <div class="form-book" data-controller="total-price" data-total-price-daily-price-value="<%= @car.price_per_day %>">
+            <%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %>
+            <%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %>
+            <div class="text-content">
+              <h4>Book amount:</h4>
+              <h5 data-total-price-target="finalPrice"></h5><h5>€</h5>
+            </div>
+          </div>
+            <a href="#"<%= f.submit class:"btn btn--with-icon"%><i class="btn-icon fa fa-long-arrow-right"></i>Book now</a>
+          <% end %>
+        </div>
+      </article>
     </div>
   </div>
 </div>
+<section class="detail-page">
+  <div class="container mt-5">
+
+  </div>
+</section>
