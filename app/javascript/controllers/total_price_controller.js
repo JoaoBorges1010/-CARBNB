@@ -15,6 +15,11 @@ export default class extends Controller {
 
     const totalCost = differenceInDays * price
 
-    this.finalPriceTarget.innerText = totalCost
+    if (isNaN(totalCost)) {
+      this.finalPriceTarget.innerText = "calculating"
+
+    } else {
+      this.finalPriceTarget.innerText = totalCost 
+    }
   }
 }

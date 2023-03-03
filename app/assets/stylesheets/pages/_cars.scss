@@ -7,6 +7,10 @@ body {
 
 }
 
+.opacitycard {
+  opacity: 0.3;
+}
+
 .container-car-list {
   margin-top: 25px;
   border-radius: 10px;
@@ -14,108 +18,92 @@ body {
   padding: 10px;
 }
 
-/* Category Ads */
+/* test */
+.card-sl {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
 
-#ads {
-    margin: 30px 0 30px 0;
+.card-image img {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 8px 8px 0px 0;
+}
+
+.card-action {
+  position: relative;
+  float: right;
+  margin-top: -25px;
+  margin-right: 20px;
+  z-index: 2;
+  color: #E26D5C;
+  background: #fff;
+  border-radius: 100%;
+  padding: 15px;
+  font-size: 15px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card-action:hover {
+  color: #fff;
+  background: #E26D5C;
+  -webkit-animation: pulse 1.5s infinite;
+}
+
+.card-heading {
+  font-size: 18px;
+  font-weight: bold;
+  background: #fff;
+  padding: 10px 15px;
+}
+
+.card-text {
+  padding: 10px 15px;
+  background: #fff;
+  font-size: 14px;
+  color: #636262;
+}
+
+.card-button {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  width: 100%;
+  background-color: #1F487E;
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  border: none;
+}
+
+.card-button:hover {
+  text-decoration: none;
+  background-color: #1D3461;
+  color: #fff;
 
 }
 
-#ads .card-opacity{
-  opacity: 0.5;
+
+@-webkit-keyframes pulse {
+  0% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+  }
+
+  70% {
+      -moz-transform: scale(1);
+      -ms-transform: scale(1);
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(90, 153, 212, 0);
+  }
+
+  100% {
+      -moz-transform: scale(0.9);
+      -ms-transform: scale(0.9);
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+      box-shadow: 0 0 0 0 rgba(90, 153, 212, 0);
+  }
 }
-
-.container h3 {
-  font-family: 'Josefin Sans', sans-serif;
-  font-size: 50px;
-  color:#284B63;
-}
-
-#ads .card-notify-badge {
-        position: absolute;
-        left: -10px;
-        top: -20px;
-        background: #284B63;
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: #B4B8AB;;
-        padding: 5px 10px;
-        font-size: 14px;
-
-    }
-
-#ads .card-notify-year {
-        position: absolute;
-        right: -10px;
-        top: -20px;
-        background: #e6de08;
-        border-radius: 50%;
-        text-align: center;
-        color: #fff;
-        font-size: 14px;
-        width: 50px;
-        height: 50px;
-        padding: 15px 0 0 0;
-}
-
-
-#ads .card-detail-badge {
-        background: #284B63;
-        text-align: center;
-        border-radius: 30px 30px 30px 30px;
-        color: #B4B8AB;
-        padding: 5px 10px;
-        font-size: 14px;
-    }
-
-
-
-#ads .card:hover {
-            background: #fff;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-#ads .card-image-overlay {
-        font-size: 20px;
-
-    }
-
-
-#ads .card-image-overlay span {
-            display: inline-block;
-        }
-
-
-#ads .ad-btn {
-        text-transform: uppercase;
-        width: 150px;
-        height: 40px;
-        border-radius: 80px;
-        font-size: 16px;
-        line-height: 35px;
-        text-align: center;
-        border: 3px solid #284B63;
-        display: block;
-        text-decoration: none;
-        margin: 20px auto 1px auto;
-        color: #e6de08;
-        overflow: hidden;
-        position: relative;
-        background-color: #284B63;
-    }
-
-#ads .ad-btn:hover {
-            background-color: #e6de08;
-            color: #284B63;
-            border: 2px solid #284B63;
-            background: transparent;
-            transition: all 0.3s ease;
-            box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-        }
-
-#ads .ad-title h5 {
-        text-transform: uppercase;
-        font-size: 18px;
-    }
