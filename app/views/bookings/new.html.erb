@@ -25,6 +25,7 @@
 </div>
 
 <div class="container mt-5">
+
   <div class="row">
     <div class="col-12">
       <article class="blog-card">
@@ -68,3 +69,25 @@
 
   </div>
 </section>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const submitBookingButton = document.getElementById("submit-booking");
+    submitBookingButton.addEventListener("click", (event) => {
+      // event.preventDefault();
+      calculateTotalPrice();
+    });
+  });
+
+  function calculateTotalPrice() {
+    const dailyPrice = parseInt(document.querySelector("[data-total-price-daily-price-value]").dataset.totalPriceDailyPriceValue, 10);
+    const startsAt = new Date(document.querySelector("[data-total-price-target='startsAt']").value);
+    const endsAt = new Date(document.querySelector("[data-total-price-target='endsAt']").value);
+    const numberOfDays = (endsAt - startsAt) / (1000 * 60 * 60 * 24) + 1;
+    const totalPrice = dailyPrice * numberOfDays;
+    const finalPriceElement = document.querySelector("[data-total-price-target='finalPrice']");
+    finalPriceElement.innerText = totalPrice;
+  }
+</script>
+

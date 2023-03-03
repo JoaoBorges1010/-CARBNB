@@ -1,8 +1,12 @@
 class BookingsController < ApplicationController
-  before_action :set_car
+  before_action :set_car, except: :confirmation
 
   def new
     @booking = Booking.new
+  end
+
+  def confirmation
+    @booking = Booking.find(params[:id])
   end
 
   def create
@@ -17,13 +21,11 @@ class BookingsController < ApplicationController
     @booking.total_price = days * @car.price_per_day.to_i
 
     if @booking.save
-      redirect_to cars_path
+      redirect_to confirmation_booking_path(@booking)
     else
       render :new, status: :unprocessable_entity
     end
-
   end
-
 
   private
 

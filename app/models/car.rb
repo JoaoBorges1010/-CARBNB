@@ -1,5 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :user
+
   has_many :bookings
 
   delegate :ends_at, to: :current_booking, prefix: true
@@ -18,4 +19,8 @@ class Car < ApplicationRecord
   def current_booking
     bookings.where(starts_at: ..Date.today).where(ends_at: Date.today..).last
   end
+
+  has_many_attached :photos, dependent: :destroy
+  has_many :bookings, dependent: :destroy
+
 end
