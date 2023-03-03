@@ -1,43 +1,45 @@
-<div class="card mb-3">
-  <div class="row g-0">
-    <div class="col-md-6">
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="https://res.cloudinary.com/your-cloud-name/image/upload/c_scale,w_500,h_300/v1234567890/Car_Image.jpg" class="d-block w-100 h-100" alt="...">
+<div class="container my-5">
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-6">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <% @car.photos.each_with_index do |photo, index| %>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= index == 0 ? "active" : "" %>" aria-current="<%= index == 0 ? "true" : "false" %>" aria-label="Slide <%= index + 1 %>"></button>
+            <% end %>
           </div>
-          <div class="carousel-item">
-            <img src="https://res.cloudinary.com/your-cloud-name/image/upload/c_scale,w_500,h_300/v1234567890/Car_Image_2.jpg" class="d-block w-100 h-100" alt="...">
+          <div class="carousel-inner">
+            <% @car.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= index == 0 ? "active" : "" %>">
+                <%= cl_image_tag photo.key, height: 400, width: 600, crop: :fill, class: "rounded" %>
+              </div>
+            <% end %>
           </div>
-          <div class="carousel-item">
-            <img src="https://res.cloudinary.com/your-cloud-name/image/upload/c_scale,w_500,h_300/v1234567890/Car_Image_3.jpg" class="d-block w-100 h-100" alt="...">
-          </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-    </div>
-    <div class="col-md-6">
-      <div class="card-body">
-        <%= button_to car_path(@car), method: :delete,
-          form: {data: {turbo_confirm: "are you sure?"}}, style:"border:none", class:"my_class" do %>
-          <i class="fa-solid fa-trash-can"></i>
-        <% end %>
-        <h5 class="card-title fw-bold text-primary mb-4"><%= @car.brand %> <%= @car.model %></h5>
-        <ul class="list-unstyled mb-3">
-           <p><strong>Fuel Type:</strong> <span><%= @car.fuel_type %></span>
-            <p><strong>Category:</strong> <span><%= @car.category %></span>
-            <p><strong>Location:</strong> <span><%= @car.location %></span>
-            <p><strong>Year:</strong> <span><%= @car.year %></span>
-            <p><strong>Space Available:</strong> <span><%= @car.space_available %></span>
-            <p><strong>Price Per Day:</strong> <span><%= @car.price_per_day %></span>
-            <p><strong>Car Available:</strong> <span><%= @car.car_available ? 'Yes' : 'No' %></span>
-        </ul>
+      <div class="col-md-6">
+        <div class="card-body">
+          <%= button_to car_path(@car), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, style:"border:none", class:"my_class" do %>
+            <i class="fa-solid fa-trash-can"></i>
+          <% end %>
+          <h5 class="card-title fw-bold text-primary mb-4"><%= @car.brand %> <%= @car.model %></h5>
+          <ul class="list-unstyled mb-3">
+            <li><strong>Fuel Type:</strong> <span><%= @car.fuel_type %></span></li>
+            <li><strong>Category:</strong> <span><%= @car.category %></span></li>
+            <li><strong>Location:</strong> <span><%= @car.location %></span></li>
+            <li><strong>Year:</strong> <span><%= @car.year %></span></li>
+            <li><strong>Space Available:</strong> <span><%= @car.space_available %></span></li>
+            <li><strong>Price Per Day:</strong> <span><%= @car.price_per_day %></span></li>
+            <li><strong>Car Available:</strong> <span><%= @car.car_available ? 'Yes' : 'No' %></span></li>
+          </ul>
         <p class="card-text mb-4">The 2022 Lamborghini Huracan is a true performance car with an aggressive design and a powerful V10 engine. It comes with a 7-speed automatic transmission, all-wheel drive, and advanced driving technologies like adaptive suspension, rear-wheel steering, and more. With only 12,000 miles on the odometer, this car is in excellent condition and ready to hit the road.</p>
         <div class="d-grid gap-2">
           <%= link_to "Book Now", new_car_booking_path(@car), class: "button-85", role: "button" %>

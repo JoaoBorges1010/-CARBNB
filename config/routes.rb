@@ -8,4 +8,8 @@ Rails.application.routes.draw do
   resources :cars do
     resources :bookings, only: %i[new create]
   end
+
+  resources :bookings, only: [] do
+    get 'confirmation', on: :member
+  end
 end

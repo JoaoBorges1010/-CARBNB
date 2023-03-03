@@ -3,19 +3,41 @@
     <div class="container">
       <div class="intro">
         <h2 class="text-center">Book This car</h2>
-        <p class="text-center">Check your price Before submiting</p>
+        <p class="text-center">Check your price Before submitting</p>
       </div>
       <div class="container p-2 mt-5" data-controller="total-price" data-total-price-daily-price-value="<%= @car.price_per_day %>">
-        <%= simple_form_for [@car, @booking] do |f|%>
-          <div class="form-group"><%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
-          <div class="form-group"><%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
+        <%= simple_form_for [@car, @booking], html: { id: "booking-form" } do |f|%>
+          <div class="form-group"><%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt" } }, class: "form-control" %></div>
+          <div class="form-group"><%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt" } }, class: "form-control" %></div>
           <div class="card w-25 rounded bg-light m-2">
             <h4 class="text-center">Price:</h4>
             <h2 class="text-center" data-total-price-target="finalPrice"></h2><h2>€</h2>
           </div>
-          <div class="form-group"><%= f.submit class: "btn btn-primary" %>
+          <div class="form-group">
+            <%= f.submit "Book now", class: "btn btn-primary", id: "submit-booking" %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const submitBookingButton = document.getElementById("submit-booking");
+    submitBookingButton.addEventListener("click", (event) => {
+      // event.preventDefault();
+      calculateTotalPrice();
+    });
+  });
+
+  function calculateTotalPrice() {
+    const dailyPrice = parseInt(document.querySelector("[data-total-price-daily-price-value]").dataset.totalPriceDailyPriceValue, 10);
+    const startsAt = new Date(document.querySelector("[data-total-price-target='startsAt']").value);
+    const endsAt = new Date(document.querySelector("[data-total-price-target='endsAt']").value);
+    const numberOfDays = (endsAt - startsAt) / (1000 * 60 * 60 * 24) + 1;
+    const totalPrice = dailyPrice * numberOfDays;
+    const finalPriceElement = document.querySelector("[data-total-price-target='finalPrice']");
+    finalPriceElement.innerText = totalPrice;
+  }
+</script>

@@ -60,8 +60,8 @@
         </div>
         <div class="col-md-4 select">
           <div class="form-group">
-            <%= f.label :images %>
-            <%= f.file_field :images, class: "form-control", multiple: true %>
+            <%= f.label :photos %>
+            <%= f.input :photos, as: :file, class: "form-control", input_html: {multiple: true} %>
             <div id="image-preview"></div>
           </div>
         </div>
