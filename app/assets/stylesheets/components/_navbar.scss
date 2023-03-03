@@ -1,6 +1,7 @@
+
+
 .navbar-lewagon {
   justify-content: space-between;
-  position: fixed;
   width: 100%;
   top: 0;
   background-color: white;
@@ -13,4 +14,9 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
   visibility: visible;
+}
+
+#title{
+  font-family: 'Gloock', serif;
+  text-shadow: 20%;
 }

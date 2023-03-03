@@ -1,13 +1,16 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to root_path, class: "" do %>
-      <%= image_tag "car-logo.svg", width: 200 %>
-    <% end %>
+  <div class="container-fluid d-flex justify-content-between">
+    <div>
+      <%= link_to root_path, class: "" do %>
+        <%= image_tag "car-logo.svg", width: 200 %>
+      <% end %>
+    </div>
+
+    <h2 class="m-0" id="title">CAR BNB</h2>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div> </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
@@ -45,3 +48,7 @@
     </div>
   </div>
 </div>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
