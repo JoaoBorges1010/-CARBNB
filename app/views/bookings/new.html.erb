@@ -1,31 +1,4 @@
-
-
-<div class="row justify-content-center">
-  <div class="booking-container d-flex justify-content-around col-10 row">
-
-    <div class="col-12 col-lg-6 card bg-white booked-card d-flex justify-content-between">
-        <div class="container row justify-content-center p-2 mt-5" data-controller="total-price" data-total-price-daily-price-value="<%= @car.price_per_day %>">
-
-          <div class="">
-            <%= simple_form_for [@car, @booking] do |f|%>
-              <div class="form-group w-50"><%= f.input :starts_at, as: :date, html5: true, input_html: { data: { total_price_target: "startsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
-              <div class="form-group"><%= f.input :ends_at, as: :date, html5: true, input_html: { data: { total_price_target: "endsAt", action: "change->total-price#calculateTotalPrice" } }, class: "form-control" %></div>
-              <div class="form-group d-flex justify-content-center"><%= f.submit class: "btn btn-primary" %> </div>
-              <% end %>
-              <div class="card bg-light total-price mt-4">
-                <h4 class="text-center">Book amount:</h4>
-                <h2 class="text-center" data-total-price-target="finalPrice"></h2><h2>€</h2>
-              </div>
-          </div>
-        </div>
-    </div>
-
-
-  </div>
-</div>
-
 <div class="container mt-5">
-
   <div class="row">
     <div class="col-12">
       <article class="blog-card">
@@ -69,25 +42,3 @@
 
   </div>
 </section>
-
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const submitBookingButton = document.getElementById("submit-booking");
-    submitBookingButton.addEventListener("click", (event) => {
-      // event.preventDefault();
-      calculateTotalPrice();
-    });
-  });
-
-  function calculateTotalPrice() {
-    const dailyPrice = parseInt(document.querySelector("[data-total-price-daily-price-value]").dataset.totalPriceDailyPriceValue, 10);
-    const startsAt = new Date(document.querySelector("[data-total-price-target='startsAt']").value);
-    const endsAt = new Date(document.querySelector("[data-total-price-target='endsAt']").value);
-    const numberOfDays = (endsAt - startsAt) / (1000 * 60 * 60 * 24) + 1;
-    const totalPrice = dailyPrice * numberOfDays;
-    const finalPriceElement = document.querySelector("[data-total-price-target='finalPrice']");
-    finalPriceElement.innerText = totalPrice;
-  }
-</script>
-

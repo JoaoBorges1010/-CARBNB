@@ -8,7 +8,7 @@
     <!-- Category Card -->
 
     <% @cars.each do |car| %>
-      <div class="container col-md-3 col-4" data-controller="booked-date" data-booked-date-unavailable-value="<%= car.unavailable? %>" data-booked-date-ends-at-value="<% car.current_booking_ends_at if car.current_booking %>" style="margin-top:50px;">
+      <div class="container col-md-3 col-4" data-controller="booked-date" data-booked-date-unavailable-value="<%= car.unavailable? %>" data-booked-date-ends-at-value="<%= car.current_booking_ends_at if car.current_booking %>" style="margin-top:50px;">
           <div>
             <div class="card-sl" data-booked-date-target="notAvailable">
               <div class="card-image">
@@ -16,7 +16,7 @@
                       src="https://images.pexels.com/photos/1149831/pexels-photo-1149831.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
               </div>
 
-              <a class="card-action" href="#"><i class="fa-solid fa-car"></i></a>
+              <a class="card-action" data-action="click->booked-date#finishDate" href="#"><i class="fa-solid fa-car"></i></a>
               <div class="card-heading">
                   <%="#{car.brand} #{car.model}" %>
               </div>
