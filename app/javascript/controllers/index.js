@@ -4,13 +4,14 @@
 
 import { application } from "./application"
 
+import BookedDateController from "./booked_date_controller"
+application.register("booked-date", BookedDateController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
 
 import TotalPriceController from "./total_price_controller"
 application.register("total-price", TotalPriceController)
 
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
-
