@@ -40,7 +40,6 @@
             <li><strong>Price Per Day:</strong> <span><%= @car.price_per_day %></span></li>
             <li><strong>Car Available:</strong> <span><%= @car.car_available ? 'Yes' : 'No' %></span></li>
           </ul>
-        <p class="card-text mb-4">The 2022 Lamborghini Huracan is a true performance car with an aggressive design and a powerful V10 engine. It comes with a 7-speed automatic transmission, all-wheel drive, and advanced driving technologies like adaptive suspension, rear-wheel steering, and more. With only 12,000 miles on the odometer, this car is in excellent condition and ready to hit the road.</p>
         <div class="d-grid gap-2">
           <%= link_to "Book Now", new_car_booking_path(@car), class: "button-85", role: "button" %>
           <%= link_to "Edit Car", edit_car_path(@car), class: "button-85", role: "button" %>
